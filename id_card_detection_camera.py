@@ -91,7 +91,7 @@ while(True):
             cv2.imwrite('test_image.jpg', frame)
             img1 = cv2.imread('test_image.jpg')
             rgb_planes = cv2.split(img1)
-            print(rgb_planes)
+            # print(rgb_planes)
             result_planes = []
             result_norm_planes = []
 
@@ -112,9 +112,9 @@ while(True):
             # # Remove noise
             # dst = cv2.fastNlMeansDenoisingColored(result_norm, None, 10, 10, 7, 11)
             text = pytesseract.image_to_string(img1).upper().replace(" ", "")
-            print(text)
+            # print(text)
             date = str(re.findall(r"[\d]{1,4}[/-][\d]{1,4}[/-][\d]{1,4}", text)).replace("]", "").replace("[","").replace("'", "")
-            print(date)
+            # print(date)
             born = date.split(",")[0]
             check_age = datetime.strptime(born, '%m/%d/%Y')
             age = (datetime.today() - check_age).days / 365
@@ -150,7 +150,7 @@ while(True):
                 print(results)
 
                 crop_pic = cv2.imshow('cropped_image', roi_color)
-                print("success")
+                # print("success")
            
         # Press 'q' to quit
         if cv2.waitKey(1) == ord('q'):
